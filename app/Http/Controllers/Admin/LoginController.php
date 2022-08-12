@@ -10,13 +10,13 @@ class LoginController extends Controller
 {
     public function index(Request $request)
     {
-        if($request->isMethod('post')){
+        if ($request->isMethod('post')) {
             $data = $request->input();
-            if(Auth::Attempt(['email'=> $data['email'], 'password' => $data['password']])){
+            if (Auth::Attempt(['email' => $data['email'], 'password' => $data['password']])) {
                 return redirect('dashboard');
-            }else{
+            } else {
 
-                return redirect('admin')->with('flash_message_error','Invalid Username or Password!');
+                return redirect('admin')->with('flash_message_error', 'Invalid Username or Password!');
             }
         }
         return view('admin.login');

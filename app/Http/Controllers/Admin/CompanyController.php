@@ -16,6 +16,14 @@ class CompanyController extends Controller
 
     public function store(Request $request)
     {
+
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique:companies',
+            'image' => 'required',
+            'website' => 'required',
+        ]);
+
         $company = new Company;
         $company->name = $request->name;
         $company->email = $request->email;
@@ -35,7 +43,7 @@ class CompanyController extends Controller
 
     public function view()
     {
-        $companies = Company::all();
+        $companies = Company::paginate(2);
         return view('admin.companies.view', compact('companies'));
     }
 
@@ -68,5 +76,11 @@ class CompanyController extends Controller
         $company->website = $request->website;
         $company->update();
         return redirect('viewCompanies')->with('status', 'Company Updated Successfully');
+    }
+
+    public function filter($companyName)
+    {
+        $data = Company::where('name', $companyName)->with('employees')->get();
+        return $data;
     }
 }

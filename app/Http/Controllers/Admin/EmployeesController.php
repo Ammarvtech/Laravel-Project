@@ -5,16 +5,26 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Employee;
+use Illuminate\Support\Facades\DB;
 
 class EmployeesController extends Controller
 {
     public function index()
     {
-        return view('admin.employees.add');
+        $companies = DB::table('companies')->select('id')->get();
+        return view('admin.employees.add', compact('companies'));
     }
 
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|unique:employees',
+            'company_id' => 'required',
+            'phone' => 'required',
+        ]);
+
         $employee = new Employee;
         $employee->first_name = $request->first_name;
         $employee->last_name = $request->last_name;
@@ -28,7 +38,7 @@ class EmployeesController extends Controller
 
      public function view()
     {
-        $employees = Employee::all();
+        $employees = Employee::paginate(2);
         return view('admin.employees.view', compact('employees'));
     }
 
@@ -57,6 +67,12 @@ class EmployeesController extends Controller
         $employee->update();
 
         return redirect('viewEmployee')->with('status', 'Employee Updated Successfully');
+    }
+
+    public function filter($employeeName)
+    {
+        $data = Employee::where('first_name', $employeeName)->with('company')->get();
+        return $data;
     }
 
 }

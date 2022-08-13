@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Frontend\HomeController;
-use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\EmployeesController;
@@ -18,21 +18,18 @@ use App\Http\Controllers\Admin\EmployeesController;
 |
 */
 
+Auth::routes();
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-
-Route::get('/admin', [LoginController::class, 'index'])->name('admin');
 
 Route::group(['namespace' => 'Admin', 'middleware' => ['auth']], function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
+    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
     // Companies
     Route::get('/addCompanies', [CompanyController::class, 'index'])->name('addCompanies');

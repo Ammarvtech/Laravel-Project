@@ -26,9 +26,13 @@
                                         placeholder="Email">
                                 </div>
                                 <div class="form-group">
-                                    <label for="email">Company ID</label>
-                                    <input type="number" name="company_id" class="form-control" id="companyId"
-                                        placeholder="Company ID">
+                                    <label for="companyId">Company ID</label>
+                                    <select class="form-control" id="companyId" name="company_id">
+                                        <option value="" selected disabled hidden>Choose Company ID</option>
+                                        @foreach ($companies as $company)
+                                            <option>{{ $company->id }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="phone">Phone</label>
@@ -41,6 +45,15 @@
                     </div>
                 </div>
             </div>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div><br />
+            @endif
         </div>
     </div>
 @endsection

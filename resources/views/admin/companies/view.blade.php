@@ -42,6 +42,7 @@
                     </div>
                 </div>
             </div>
+            {{ $companies->links() }}
         </div>
     </div>
 @endsection

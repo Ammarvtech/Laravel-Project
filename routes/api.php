@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\CompanyController;
+use App\Http\Controllers\Admin\EmployeesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +19,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/company/{name}', [CompanyController::class, 'filter'])->name('filterCompany');
+Route::post('/employee/{name}', [EmployeesController::class, 'filter'])->name('filterEmployee');

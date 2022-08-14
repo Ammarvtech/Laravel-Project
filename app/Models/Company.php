@@ -13,4 +13,8 @@ class Company extends Model
     {
         $query->where('name','like','%'.$companyName.'%');
     }
+    public function employees()
+    {
+        return $this->hasMany(Employee::class);
+    }
 }

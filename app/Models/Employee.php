@@ -14,4 +14,8 @@ class Employee extends Model
         $query->where('first_name','like','%'.$employeeName.'%');
         return $query->orWhere('last_name','like','%'.$employeeName.'%');
     }
+    public function company()
+    {
+        return $this->hasOne(Company::class, 'id', 'company_id');
+    }
 }

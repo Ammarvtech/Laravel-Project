@@ -22,17 +22,8 @@ class CompanyController extends Controller
         }else{
             $companies = Company::latest()->get();   
         }
-        if(!empty($companies)){
-            return response()->json([
-                'message' => 'Records Fetched Successfully.',
+        return response()->json([
                 'data' => $companies,
-            ]);
-        }else{
-
-            return response()->json([
-                'data' => $companies,
-                'message' => 'No Records Found.'
-            ]);
-        }
+        ]);
     }
 }

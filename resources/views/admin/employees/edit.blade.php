@@ -3,7 +3,7 @@
     <div class="main-panel">
         <div class="content-wrapper">
             <div class="row">
-                <div class="col-md-6 grid-margin stretch-card">
+                <div class="col-md-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">Edit Employee</h4>
@@ -26,9 +26,13 @@
                                         placeholder="Email" value="{{ $employee->email }}">
                                 </div>
                                 <div class="form-group">
-                                    <label for="email">Company ID</label>
-                                    <input type="number" name="company_id" class="form-control" id="companyId"
-                                        placeholder="Company ID" value="{{ $employee->company_id }}">
+                                    <label for="email">Company</label>
+                                     <select class="form-control" id="companyId" name="company_id">
+                                        <option value="">Choose Company ID</option>
+                                        @foreach ($companies as $company)
+                                            <option value="{{ $company->id }}" @if($company->id === $employee->company_id) selected="" @endif>{{ $company->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="phone">Phone</label>

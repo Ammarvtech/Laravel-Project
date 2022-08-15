@@ -3,28 +3,22 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AddEmployeeRequest;
 use Illuminate\Http\Request;
 use App\Models\Employee;
-use Illuminate\Support\Facades\DB;
+use App\Models\Company;
+
 
 class EmployeesController extends Controller
 {
     public function index()
     {
-        $companies = DB::table('companies')->select('id')->get();
+        $companies = Company::select('id','name')->get();
         return view('admin.employees.add', compact('companies'));
     }
 
-    public function store(Request $request)
+    public function store(AddEmployeeRequest $request)
     {
-        $validatedData = $request->validate([
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required|unique:employees',
-            'company_id' => 'required',
-            'phone' => 'required',
-        ]);
-
         $employee = new Employee;
         $employee->first_name = $request->first_name;
         $employee->last_name = $request->last_name;
@@ -33,7 +27,8 @@ class EmployeesController extends Controller
         $employee->phone = $request->phone;
         $employee->save();
 
-        return redirect('viewEmployee')->with('status', 'Employee Added Successfully');
+        return redirect('viewEmployee')->with('flash_message_success','Record Added Successfully');
+
     }
 
      public function view()
@@ -47,13 +42,16 @@ class EmployeesController extends Controller
     {
         $employee = Employee::find($id);
         $employee->delete();
-        return redirect('viewEmployee')->with('status', 'Employee Deleted');
+        return redirect('viewEmployee')->with('flash_message_success','Record Deleted Successfully');
+
     }
 
     public function edit($id)
     {
         $employee = Employee::find($id);
-        return view('admin.employees.edit', compact('employee'));
+        $companies = Company::select('id','name')->get();
+
+        return view('admin.employees.edit', compact('employee','companies'));
     }
 
      public function update(Request $request, $id)
@@ -65,8 +63,7 @@ class EmployeesController extends Controller
         $employee->company_id = $request->company_id;
         $employee->phone = $request->phone;
         $employee->update();
-
-        return redirect('viewEmployee')->with('status', 'Employee Updated Successfully');
+        return redirect('viewEmployee')->with('flash_message_success','Record Updated Successfully');
     }
 
     public function filter($employeeName)

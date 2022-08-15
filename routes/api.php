@@ -28,6 +28,3 @@ Route::prefix('v1')->group(function () {
 	});
 
 });
-
-Route::post('/company/{name}', [CompanyController::class, 'filter'])->name('filterCompany');
-Route::post('/employee/{name}', [EmployeesController::class, 'filter'])->name('filterEmployee');

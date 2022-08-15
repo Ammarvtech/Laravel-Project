@@ -3,7 +3,7 @@
     <div class="main-panel">
         <div class="content-wrapper">
             <div class="row">
-                <div class="col-md-6 grid-margin stretch-card">
+                <div class="col-md-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">Add Employee</h4>
@@ -28,9 +28,9 @@
                                 <div class="form-group">
                                     <label for="companyId">Company ID</label>
                                     <select class="form-control" id="companyId" name="company_id">
-                                        <option value="" selected disabled hidden>Choose Company ID</option>
+                                        <option value="">Choose Company ID</option>
                                         @foreach ($companies as $company)
-                                            <option>{{ $company->id }}</option>
+                                            <option value="{{ $company->id }}">{{ $company->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>

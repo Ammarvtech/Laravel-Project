@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AddCompanyRequest;
 use Illuminate\Http\Request;
 use App\Models\Company;
 use Illuminate\Support\Facades\Storage;
@@ -14,15 +15,8 @@ class CompanyController extends Controller
         return view('admin.companies.add');
     }
 
-    public function store(Request $request)
+    public function store(AddCompanyRequest $request)
     {
-
-        $validatedData = $request->validate([
-            'name' => 'required',
-            'email' => 'required|unique:companies',
-            'image' => 'required',
-            'website' => 'required',
-        ]);
 
         $company = new Company;
         $company->name = $request->name;
@@ -38,7 +32,7 @@ class CompanyController extends Controller
         $company->website = $request->website;
         $company->save();
 
-        return redirect('viewCompanies')->with('status', 'Company Added Successfully');
+        return redirect('viewCompanies')->with('flash_message_success','Record Added Successfully');
     }
 
     public function view()
@@ -51,7 +45,7 @@ class CompanyController extends Controller
     {
         $company = Company::find($id);
         $company->delete();
-        return redirect('viewCompanies')->with('status', 'Company Deleted');
+        return redirect('viewCompanies')->with('flash_message_success','Record Deleted Successfully');
     }
 
     public function edit($id)
@@ -75,7 +69,7 @@ class CompanyController extends Controller
 
         $company->website = $request->website;
         $company->update();
-        return redirect('viewCompanies')->with('status', 'Company Updated Successfully');
+        return redirect('viewCompanies')->with('flash_message_success','Record Updated Successfully');
     }
 
     public function filter($companyName)

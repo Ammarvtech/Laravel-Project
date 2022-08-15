@@ -3,7 +3,7 @@
     <div class="main-panel">
         <div class="content-wrapper">
             <div class="row">
-                <div class="col-md-6 grid-margin stretch-card">
+                <div class="col-md-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">Edit Company</h4>
@@ -24,6 +24,10 @@
                                     <label for="websiteUrl">Website URL</label>
                                     <input type="text" name="website" class="form-control" id="websiteUrl"
                                         placeholder="Website Url" value="{{ $company->website }}">
+                                </div>
+                                <div class="form-group">
+                                    <img src="{{ asset('images/companies/' . $company->logo) }}" height="200"
+                                                    width="250" />
                                 </div>
                                 <div class="form-group">
                                     <input type="file" name="image">

@@ -23,18 +23,9 @@ class EmployeeController extends Controller
             $employees = Employee::get();   
         }
 
-        if(!empty($employees)){
-            return response()->json([
-                'message' => 'Records Fetched Successfully.',
-                'data' => $employees,
-            ]);
-        }else{
-
-            return response()->json([
-                'data' => $employees,
-                'message' => 'No Records Found.'
-            ]);
-        }
+        return response()->json([
+            'data' => $employees
+        ]);
        
     }
 }

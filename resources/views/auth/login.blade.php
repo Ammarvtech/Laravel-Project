@@ -1,12 +1,17 @@
 @extends('layouts.app')
+<style type="text/css">
+    .w3l-footer{
+        margin-top: 200px;
 
+    }
+</style>
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
 
+<section class="w3l-grids">
+        <div class="grids-main py-5">
+            <div class="container py-lg-3">
+                <div class="card">
+                <div class="card-header">{{ __('Login') }}</div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
@@ -67,7 +72,8 @@
                     </form>
                 </div>
             </div>
+            </div>
         </div>
-    </div>
-</div>
+    </section>
+
 @endsection

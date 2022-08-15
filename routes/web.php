@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\CompanyController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\EmployeesController;
 
 /*
@@ -32,12 +32,12 @@ Route::group(['namespace' => 'Admin', 'middleware' => ['auth']], function () {
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
     // Companies
-    Route::get('/addCompanies', [CompanyController::class, 'index'])->name('addCompanies');
-    Route::post('/storeCompany', [CompanyController::class, 'store'])->name('storeCompany');
-    Route::get('/viewCompanies', [CompanyController::class, 'view'])->name('viewCompanies');
-    Route::get('/deleteCompany/{id}', [CompanyController::class, 'delete'])->name('deleteCompany');
-    Route::get('/editCompany/{id}', [CompanyController::class, 'edit'])->name('editCompany');
-    Route::post('/updateCompany/{id}', [CompanyController::class, 'update'])->name('updateCompany');
+    Route::get('/addCategories', [CategoryController::class, 'index'])->name('addCategories');
+    Route::post('/storeCategory', [CategoryController::class, 'store'])->name('storeCategory');
+    Route::get('/viewCategories', [CategoryController::class, 'view'])->name('viewCategories');
+    Route::get('/deleteCategory/{id}', [CategoryController::class, 'delete'])->name('deleteCategory');
+    Route::get('/editCategory/{id}', [CategoryController::class, 'edit'])->name('editCategory');
+    Route::post('/updateCategory/{id}', [CategoryController::class, 'update'])->name('updateCategory');
 
     // Employees
     Route::get('/addEmployee', [EmployeesController::class, 'index'])->name('addEmployee');

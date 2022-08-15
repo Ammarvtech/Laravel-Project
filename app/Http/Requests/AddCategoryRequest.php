@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddCompanyRequest extends FormRequest
+class AddCategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,19 +25,13 @@ class AddCompanyRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'email' => 'required|unique:companies',
-            'image' => 'required',
-            'website' => 'required',
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required' => 'Name Field is required!',
-            'email.required' => 'Email Field is required!',
-            'image.required' => 'Image Field is required!',
-            'website.required' => 'Website Field is required!',
+            'name.required' => 'Name Field is required!'
         ];
     }
 }

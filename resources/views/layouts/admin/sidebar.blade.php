@@ -8,35 +8,36 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
-                aria-controls="ui-basic">
-                <span class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
-                <span class="menu-title">Companies</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="ui-basic">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{ url('viewCompanies') }}">View Companies</a>
-                    </li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ url('addCompanies') }}">Add Companies</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
-        <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
                 <span class="icon-bg"><i class="mdi mdi-lock menu-icon"></i></span>
-                <span class="menu-title">Employees</span>
+                <span class="menu-title">Categories</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="auth">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{ url('viewEmployee') }}">View Employees</a>
+                    <li class="nav-item"> <a class="nav-link" href="{{ url('viewCategories') }}">View Categories</a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ url('addEmployee') }}">Add Employees</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ url('addCategories') }}">Add Categories</a></li>
                 </ul>
             </div>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
+                aria-controls="ui-basic">
+                <span class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
+                <span class="menu-title">Products</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{ url('viewProducts') }}">View Products</a>
+                    </li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ url('addProducts') }}">Add Products</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+       
 
         <li class="nav-item sidebar-user-actions">
             <div class="sidebar-user-menu">

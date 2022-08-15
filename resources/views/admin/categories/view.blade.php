@@ -18,32 +18,26 @@
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Companies List</h4>
+                            <h4 class="card-title">Category List</h4>
                             <table class="table">
                                 <thead>
                                     <tr>
                                         <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Logo</th>
-                                        <th>Website</th>
                                         <th>Edit</th>
                                         <th>Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($companies as $company)
+                                    @foreach ($categories as $category)
                                         <tr>
-                                            <td>{{ $company->name }}</td>
-                                            <td>{{ $company->email }}</td>
-                                            <td><img src="{{ asset('images/companies/' . $company->logo) }}" height="200"
-                                                    width="200" /></td>
-                                            <td>{{ $company->website }}</td>
+                                            <td>{{ $category->name }}</td>
+                                       
                                             <td><button type="submit" class="btn btn-primary me-2"><a
-                                                        href="{{ url('editCompany/' . $company->id) }}"
+                                                        href="{{ url('editCategory/' . $category->id) }}"
                                                         style="color: #fff">Edit</a></button>
                                             </td>
                                             <td><button class="btn btn-danger me-2"><a onclick="return confirm('Are you sure you want to delete this item?');"
-                                                        href="{{ url('deleteCompany/' . $company->id) }}"
+                                                        href="{{ url('deleteCategory/' . $category->id) }}"
                                                         style="color: #fff">Delete</a></button>
                                             </td>
                                         </tr>
@@ -54,7 +48,7 @@
                     </div>
                 </div>
             </div>
-            {{ $companies->links() }}
+            {{ $categories->links() }}
         </div>
     </div>
 @endsection

@@ -13,8 +13,8 @@
                             <div class="col-xl-3 col-lg-6 col-sm-6 grid-margin stretch-card">
                                 <div class="card">
                                     <div class="card-body text-center">
-                                        <h1 class="mb-2 text-dark font-weight-normal">Companies</h1>
-                                        <h2 class="mb-4 text-dark font-weight-bold">{{ $data['totalCompanies'] }}</h2>
+                                        <h1 class="mb-2 text-dark font-weight-normal">Categories</h1>
+                                        <h2 class="mb-4 text-dark font-weight-bold">{{ $data['totalCategories'] }}</h2>
                                     </div>
                                 </div>
                             </div>

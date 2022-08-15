@@ -6,28 +6,16 @@
                 <div class="col-md-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Add Company</h4>
-                            <form class="forms-sample" method="post" action="{{ url('storeCompany') }}"
+                            <h4 class="card-title">Add Category</h4>
+                            <form class="forms-sample" method="post" action="{{ url('storeCategory') }}"
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="companyName">Company Name</label>
+                                    <label for="companyName">Category Name</label>
                                     <input type="text" name="name" class="form-control" id="companyName"
-                                        placeholder="Company Name">
+                                        placeholder="Category Name">
                                 </div>
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" name="email" class="form-control" id="email"
-                                        placeholder="Email">
-                                </div>
-                                <div class="form-group">
-                                    <label for="websiteUrl">Website URL</label>
-                                    <input type="text" name="website" class="form-control" id="websiteUrl"
-                                        placeholder="Website Url">
-                                </div>
-                                <div class="form-group">
-                                    <input type="file" name="image">
-                                </div>
+                               
                                 <button type="submit" class="btn btn-primary me-2">Submit</button>
                             </form>
                         </div>

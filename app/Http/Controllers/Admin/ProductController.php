@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AddEmployeeRequest;
+use App\Http\Requests\AddProductRequest;
 use Illuminate\Http\Request;
 use App\Models\Employee;
 use App\Models\Company;
 
 
-class EmployeesController extends Controller
+class ProductController extends Controller
 {
     public function index()
     {
         $companies = Company::select('id','name')->get();
-        return view('admin.employees.add', compact('companies'));
+        return view('admin.products.add', compact('companies'));
     }
 
     public function store(AddEmployeeRequest $request)
@@ -27,7 +27,7 @@ class EmployeesController extends Controller
         $employee->phone = $request->phone;
         $employee->save();
 
-        return redirect('viewEmployee')->with('flash_message_success','Record Added Successfully');
+        return redirect('vieProducts')->with('flash_message_success','Record Added Successfully');
 
     }
 

@@ -32,12 +32,12 @@
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="{{ url('viewProducts') }}">View Products</a>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ url('addProducts') }}">Add Products</a>
+                    <li class="nav-item"> <a class="nav-link" href="{{ url('addProduct') }}">Add Products</a>
                     </li>
                 </ul>
             </div>
         </li>
-       
+
 
         <li class="nav-item sidebar-user-actions">
             <div class="sidebar-user-menu">

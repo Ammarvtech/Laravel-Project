@@ -7,63 +7,82 @@ use App\Http\Requests\AddProductRequest;
 use Illuminate\Http\Request;
 use App\Models\Employee;
 use App\Models\Company;
+use App\Models\Product;
+use App\Models\Category;
 
 
 class ProductController extends Controller
 {
     public function index()
     {
-        $companies = Company::select('id','name')->get();
-        return view('admin.products.add', compact('companies'));
+        $categories = Category::select('id','name')->get();
+        return view('admin.products.add', compact('categories'));
     }
 
-    public function store(AddEmployeeRequest $request)
+    public function store(AddProductRequest $request)
     {
-        $employee = new Employee;
-        $employee->first_name = $request->first_name;
-        $employee->last_name = $request->last_name;
-        $employee->company_id = $request->company_id;
-        $employee->email = $request->email;
-        $employee->phone = $request->phone;
-        $employee->save();
+        $product = new Product;
+        $product->name = $request->name;
 
-        return redirect('vieProducts')->with('flash_message_success','Record Added Successfully');
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $image_name = $image->getClientOriginalName();
+            $image->move(public_path('/images/products'),$image_name);
+            $product->image = $image_name;
+        }
+
+        $product->price = $request->price;
+        $product->color = $request->color;
+        $product->size = $request->size;
+        $product->category_id = $request->category_id;
+        $product->save();
+
+        return redirect('viewProducts')->with('flash_message_success','Record Added Successfully');
 
     }
 
      public function view()
     {
-        $employees = Employee::paginate(2);
-        return view('admin.employees.view', compact('employees'));
+        $products = Product::paginate(4);
+        return view('admin.products.view', compact('products'));
     }
 
 
     public function delete($id)
     {
-        $employee = Employee::find($id);
-        $employee->delete();
-        return redirect('viewEmployee')->with('flash_message_success','Record Deleted Successfully');
+        $product = Product::find($id);
+        $product->delete();
+        return redirect('viewProducts')->with('flash_message_success','Record Deleted Successfully');
 
     }
 
     public function edit($id)
     {
-        $employee = Employee::find($id);
-        $companies = Company::select('id','name')->get();
+        $product = Product::find($id);
+        $categories = Category::select('id','name')->get();
 
-        return view('admin.employees.edit', compact('employee','companies'));
+        return view('admin.products.edit', compact('product','categories'));
     }
 
-     public function update(Request $request, $id)
+    public function update(AddProductRequest $request, $id)
     {
-        $employee = Employee::find($id);
-        $employee->first_name = $request->first_name;
-        $employee->last_name = $request->last_name;
-        $employee->email = $request->email;
-        $employee->company_id = $request->company_id;
-        $employee->phone = $request->phone;
-        $employee->update();
-        return redirect('viewEmployee')->with('flash_message_success','Record Updated Successfully');
+        $product = Product::find($id);
+        $product->name = $request->name;
+
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+            $image_name = $image->getClientOriginalName();
+            $image->move(public_path('/images/products'),$image_name);
+            $product->image = $image_name;
+        }
+
+        $product->price = $request->price;
+        $product->color = $request->color;
+        $product->size = $request->size;
+        $product->category_id = $request->category_id;
+
+        $product->update();
+        return redirect('viewProducts')->with('flash_message_success','Record Updated Successfully');
     }
 
     public function filter($employeeName)

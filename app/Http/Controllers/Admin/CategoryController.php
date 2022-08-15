@@ -28,7 +28,7 @@ class CategoryController extends Controller
 
     public function view()
     {
-        $categories = Category::paginate(2);
+        $categories = Category::paginate(4);
         return view('admin.categories.view', compact('categories'));
     }
 
@@ -49,7 +49,7 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         $category->name = $request->name;
-        
+
         $category->update();
         return redirect('viewCategories')->with('flash_message_success','Record Updated Successfully');
     }

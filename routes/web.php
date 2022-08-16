@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\EmployeesController;
+use App\Http\Controllers\Admin\OrderController;
 
 use App\Http\Controllers\Admin\ProductController;
 
@@ -50,6 +51,15 @@ Route::group(['namespace' => 'Admin', 'middleware' => ['auth']], function () {
     Route::get('/deleteProduct/{id}', [ProductController::class, 'delete'])->name('deleteProduct');
     Route::get('/editProduct/{id}', [ProductController::class, 'edit'])->name('editProduct');
     Route::post('/updateProduct/{id}', [ProductController::class, 'update'])->name('updateProduct');
+
+
+    // Checkout Routes
+    Route::get('/checkout', [CheckOutController::class, 'index'])->name('checkout');
+    Route::post('/placeOrder', [CheckOutController::class, 'placeorder'])->name('placeOrder');
+
+    // Orders
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders');
+    Route::get('/orderDetails/{id}', [OrderController::class, 'orderDetails'])->name('orderDetails');
 });
 
 
@@ -60,5 +70,3 @@ Route::get('add.to.cart/{id}', [CartController::class, 'addToCart'])->name('add.
 Route::patch('update-cart', [CartController::class, 'update'])->name('update.cart');
 Route::delete('remove-from-cart', [CartController::class, 'remove'])->name('remove.from.cart');
 Route::get('category/{catId}', [FrontendController::class, 'filterByCategory'])->name('filterByCategory');
-
-Route::get('/checkout', [CheckOutController::class, 'index'])->name('checkout');

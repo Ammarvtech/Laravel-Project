@@ -37,6 +37,12 @@
                 </ul>
             </div>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url('/orders') }}">
+                <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+                <span class="menu-title">View Orders</span>
+            </a>
+        </li>
 
 
         <li class="nav-item sidebar-user-actions">

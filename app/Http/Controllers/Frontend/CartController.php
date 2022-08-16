@@ -31,11 +31,12 @@ class CartController extends Controller
                 "price" => $product->price,
                 "color" => $product->color,
                 "size" => $product->size,
+                "product_id" => $product->id,
             ];
         }
 
         session()->put('cart', $cart);
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
+        return redirect()->back()->with('success', 'Place Order Successfully!');
     }
 
     public function update(Request $request)

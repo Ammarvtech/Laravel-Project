@@ -2,6 +2,18 @@
 @section('content')
     <!-- Men Clothos Area -->
     <div class="product-area section" style="background: #f6f6f6">
+        @if (Session::has('flash_message_error'))
+            <div class="alert alert-error alert-block" style="margin: 18px;">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{!! session('flash_message_error') !!}</strong>
+            </div>
+        @endif
+        @if (Session::has('flash_message_success'))
+            <div class="alert alert-success alert-block" style="margin: 18px;">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{!! session('flash_message_success') !!}</strong>
+            </div>
+        @endif
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -36,7 +48,9 @@
                                                         </div>
                                                     </div>
                                                     <div class="product-content">
-                                                        <h3><a href="product-details.html">{{ $product->name }}</a></h3>
+                                                        <div class="product-name">
+                                                            <span>{{ $product->name }}</span>
+                                                        </div>
                                                         <div class="product-price">
                                                             <span>{{ $product->price }}</span>
                                                         </div>

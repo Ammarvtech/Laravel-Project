@@ -52,7 +52,7 @@
                                                             <span>{{ $product->name }}</span>
                                                         </div>
                                                         <div class="product-price">
-                                                            <span>{{ $product->price }}</span>
+                                                            <span>${{ $product->price }}</span>
                                                         </div>
                                                     </div>
                                                 </div>

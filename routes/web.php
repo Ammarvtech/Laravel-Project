@@ -53,10 +53,6 @@ Route::group(['namespace' => 'Admin', 'middleware' => ['auth']], function () {
     Route::post('/updateProduct/{id}', [ProductController::class, 'update'])->name('updateProduct');
 
 
-    // Checkout Routes
-    Route::get('/checkout', [CheckOutController::class, 'index'])->name('checkout');
-    Route::post('/placeOrder', [CheckOutController::class, 'placeorder'])->name('placeOrder');
-
     // Orders
     Route::get('/orders', [OrderController::class, 'index'])->name('orders');
     Route::get('/orderDetails/{id}', [OrderController::class, 'orderDetails'])->name('orderDetails');
@@ -70,3 +66,7 @@ Route::get('add.to.cart/{id}', [CartController::class, 'addToCart'])->name('add.
 Route::patch('update-cart', [CartController::class, 'update'])->name('update.cart');
 Route::delete('remove-from-cart', [CartController::class, 'remove'])->name('remove.from.cart');
 Route::get('category/{catId}', [FrontendController::class, 'filterByCategory'])->name('filterByCategory');
+
+// Checkout Routes
+    Route::get('/checkout', [CheckOutController::class, 'index'])->name('checkout');
+    Route::post('/placeOrder', [CheckOutController::class, 'placeorder'])->name('placeOrder');

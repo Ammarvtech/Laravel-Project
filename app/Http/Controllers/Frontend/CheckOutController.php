@@ -26,7 +26,7 @@ class CheckOutController extends Controller
         $user = Auth::user();
         $grand_total = $this->grandTotal();
         $order = new Order;
-        $order->user_id = $user->id;
+        $order->user_id = 1;
         $order->grand_total = $grand_total;
         $order->first_name = $request->first_name;
         $order->last_name = $request->last_name;

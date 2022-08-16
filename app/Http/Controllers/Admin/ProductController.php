@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AddProductRequest;
 use Illuminate\Http\Request;
-use App\Models\Employee;
-use App\Models\Company;
 use App\Models\Product;
 use App\Models\Category;
 
